@@ -15,7 +15,7 @@ namespace Hahn.ApplicationProcess.February2021.Data.Models
         public string CountryOfDepartment { get; set; }
         public string EmailAddressOfDepartment { get; set; }
         public DateTime PurchaseDate { get; set; }
-        public bool Broker { get; set; } = false;
+        public bool Broken { get; set; } = false;
 
     }
 }

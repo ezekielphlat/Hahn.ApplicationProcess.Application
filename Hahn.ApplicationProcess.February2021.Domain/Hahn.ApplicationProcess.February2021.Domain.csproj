@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Hahn.ApplicationProcess.February2021.Data\Hahn.ApplicationProcess.February2021.Data.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -9,21 +9,16 @@ namespace Hahn.ApplicationProcess.February2021.Data.Data
 {
     public class AssetDbContext : DbContext
     {
+        public AssetDbContext()
+        {
+
+        }
         public AssetDbContext(DbContextOptions<AssetDbContext> options) : base(options)
         {
 
         }
 
-        public DbSet<Asset> Assets { get; set; }
-
-        public void LoadDummyAssets()
-        {
-            Asset asset = new Asset() { ID = 1, AssetName = "My AssetName", Department = "HQ" };
-            Assets.Add(asset);
-        }
-        public List<Asset> GetAssets()
-        {
-            return Assets.Local.ToList<Asset>();
-        }
+        public DbSet<Asset> Asset { get; set; }
+        
     }
 }
