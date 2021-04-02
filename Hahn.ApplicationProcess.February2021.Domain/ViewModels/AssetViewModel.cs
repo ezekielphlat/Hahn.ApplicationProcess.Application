@@ -8,7 +8,7 @@ namespace Hahn.ApplicationProcess.February2021.Domain.ViewModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Department { get; set; }
+        public Department Department { get; set; }
         public string Country { get; set; }
         public string Email { get; set; }
         public DateTime Date { get; set; }

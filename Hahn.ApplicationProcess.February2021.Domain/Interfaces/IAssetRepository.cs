@@ -9,8 +9,10 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Interfaces
     public interface IAssetRepository
     {
         Task<List<AssetViewModel>> FindAllAsync();
+        Task<AssetViewModel> FindByIdAsync(int Id);
         Task SaveAsync(AssetViewModel model);
         Task UpdateAsync(AssetViewModel model);
         Task DeleteAsync(int Id);
+        Task<bool> IsCountryValid(string country);
     }
 }
