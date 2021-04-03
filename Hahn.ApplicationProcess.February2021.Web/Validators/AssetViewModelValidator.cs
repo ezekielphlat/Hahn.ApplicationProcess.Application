@@ -23,8 +23,8 @@ namespace Hahn.ApplicationProcess.February2021.Web.Validators
             RuleFor(x => x.Department).NotEmpty().IsInEnum().WithMessage("Department is not valid");
             RuleFor(x => x.Country).MustAsync(async (Country, cancellation) => {
                 bool exists = await _asset.IsCountryValid(Country);
-                return !exists;
-            }).WithMessage("Country Name Must be unique");
+                return exists;
+            }).WithMessage("Country Name Must be a valid Fullname");
             RuleFor(x => x.Date).NotEmpty().GreaterThanOrEqualTo(DateTime.Now.AddYears(-1))
                 .WithMessage("Asset Purchased Date should not be older than one year");
             RuleFor(x => x.Email).NotEmpty().EmailAddress().WithMessage("Department email must be a valid email");

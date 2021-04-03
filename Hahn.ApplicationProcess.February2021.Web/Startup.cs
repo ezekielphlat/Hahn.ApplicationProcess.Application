@@ -77,7 +77,7 @@ namespace Hahn.ApplicationProcess.February2021.Web
             app.UseSwagger();
             app.UseSwaggerUI(options => {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Hahn Asset Application Api");
-                
+                options.RoutePrefix = "";
                 });
 
             DataInitializer.SeedData(asset);

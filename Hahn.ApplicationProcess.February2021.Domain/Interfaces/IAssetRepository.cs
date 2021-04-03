@@ -11,7 +11,7 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Interfaces
         Task<List<AssetViewModel>> FindAllAsync();
         Task<AssetViewModel> FindByIdAsync(int Id);
         Task SaveAsync(AssetViewModel model);
-        Task UpdateAsync(AssetViewModel model);
+        Task UpdateAsync(int Id, AssetViewModel model);
         Task DeleteAsync(int Id);
         Task<bool> IsCountryValid(string country);
     }

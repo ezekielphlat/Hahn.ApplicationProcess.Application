@@ -74,21 +74,14 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
                 BaseAddress = new Uri("https://restcountries.eu/rest/v2/name/")
             };
             var result = await httpClient.GetAsync($"{country}?fullText=true");
-            var responseJson = new Dictionary<string, object>();
+            //TODO: Revisit this method. to know why i could not manipulate responses
             if (result.IsSuccessStatusCode)
             {
-                using var responseStream = await result.Content.ReadAsStreamAsync();
-                 responseJson = await JsonSerializer.DeserializeAsync
-                <Dictionary<string, object>>(responseStream);
-             
-            }
-            if (responseJson.ContainsKey("status") && responseJson["status"].ToString() == "404")
-            {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
 
         }
@@ -120,11 +113,11 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
             }
         }
 
-        public async Task UpdateAsync(AssetViewModel model)
+        public async Task UpdateAsync(int Id, AssetViewModel model)
         {
             using(AssetDbContext context = new AssetDbContext())
             {
-                var entity = await context.Asset.FirstOrDefaultAsync(p => p.ID == model.Id);
+                var entity = await context.Asset.FirstOrDefaultAsync(p => p.ID == Id);
                 if(entity != null)
                 {
                     entity.AssetName = model.Name;

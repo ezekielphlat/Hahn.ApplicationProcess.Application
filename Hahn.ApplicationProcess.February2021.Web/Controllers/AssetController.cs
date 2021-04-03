@@ -45,14 +45,7 @@ namespace Hahn.ApplicationProcess.February2021.Web.Controllers
         /// <summary>
         /// This method gets specific asset by Id. it takes an id parameter
         /// </summary>
-        /// <param name="id"></param>
-        /// <remarks>
-        ///     Sample Request
-        ///     
-        ///     {
-        ///     "id": 1
-        ///     }
-        /// </remarks>
+        /// <param name="id"></param>        
         /// <returns>It returns a response message with single asset data</returns>
         // GET api/<AssetController>/5
         [HttpGet("{id}")]
@@ -60,43 +53,126 @@ namespace Hahn.ApplicationProcess.February2021.Web.Controllers
         {
             var result = await _asset.FindByIdAsync(id);
          
-            _logger.LogInformation($"{DateTime.Now} {"AssetController: "} request for specific asset is successful");
+            _logger.LogInformation($"{DateTime.Now} {"AssetController:GetByIdAsync "} request for specific asset is successful");
              return Ok(new ResponseMessageViewModel { Status = 200, Message = "Successful", Data = result });          
         }
 
         /// <summary>
-        /// Post Method 
+        /// This method posts new assets to the db
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST /api/asset
+        ///     {
+        ///         "Name": "Television",
+        ///         "Department": 2,
+        ///          "Country": "Germany",
+        ///         "Email": "store1@hahn.com",
+        ///         "Date": "2021-04-03T09:24:32.647557+01:00",
+        ///         "isBroken": false
+        ///     }
+        /// </remarks>
+        /// <returns>a response message with data of asset ID</returns>
         // POST api/<AssetController>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody]AssetViewModel model)
         {
             //implement fluent validation validation
-            return Ok();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _asset.SaveAsync(model);
+                    _logger.LogInformation($"{DateTime.Now} {"AssetController:PostAsync"} asset with name: {model.Name} has been successfully saved");
+                    return Ok(new ResponseMessageViewModel { Status = 200, Message = "successfully", Data = model.Name });
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"{DateTime.Now} {"AssetController:PostAsync "} an asset with Name: {model.Name} encountered an error while saving. full stacktrace: {ex}");
+                    return Ok(new ResponseMessageViewModel { Status = 500, Message = "An error occure while trying to save your request", Data = ex.Message });
+
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+         
         }
 
         /// <summary>
         /// 
         /// </summary>
+        ///  /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST /api/asset/1
+        ///     {
+        ///         "Name": "PlayStation 5",
+        ///         "Department": 3,
+        ///        
+        ///     }
+        /// </remarks>
         /// <param name="id"></param>
-        /// <param name="value"></param>
+        /// <param name="model"></param>
         // PUT api/<AssetController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]AssetViewModel model)
+        public async Task<IActionResult> PutAsync(int id, [FromBody]AssetViewModel model)
         {
-        }
+            if (id >= 1 && ModelState.IsValid)
+            {
 
-        /// <summary>
-        /// 
+                try
+                {
+                    await _asset.UpdateAsync(id,model);
+                    _logger.LogInformation($"{DateTime.Now} {"AssetController:PostAsync"} asset with Id: {id} has been successfully updated");
+                    return Ok(new ResponseMessageViewModel { Status = 200, Message = "successfully", Data = model.Name });
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"{DateTime.Now} {"AssetController:PostAsync "} an asset with Name: {id} encountered an error while updating. full stacktrace: {ex}");
+                    return Ok(new ResponseMessageViewModel { Status = 500, Message = "An error occure while trying to save your request", Data = ex.Message });
+
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+        
+       }
+
+        /// <summary>     
+        /// Method to delete an asset
         /// </summary>
         /// <param name="id"></param>
         // DELETE api/<AssetController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
+            if (id >= 1) {
+                try
+                {
+                    await _asset.DeleteAsync(id);
+                    _logger.LogInformation($"{DateTime.Now} {"AssetController:PostAsync"} asset with Id: {id} has been successfully Deleted");
+                    return Ok(new ResponseMessageViewModel { Status = 200, Message = "successfully", Data = id });
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"{DateTime.Now} {"AssetController:PostAsync "} an asset with Name: {id} encountered an error while deleting. full stacktrace: {ex}");
+                    return Ok(new ResponseMessageViewModel { Status = 500, Message = "An error occure while trying to save your request", Data = ex.Message });
 
+                }
+            }
+            else
+            {
+                return BadRequest("Not a valid student id");
+
+            }
+
+          
         }
     }
 }
