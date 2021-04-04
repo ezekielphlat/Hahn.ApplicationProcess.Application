@@ -1,7 +1,5 @@
 ﻿using Hahn.ApplicationProcess.February2021.Domain.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Hahn.ApplicationProcess.February2021.Domain.Interfaces

@@ -7,16 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Security.Policy;
-using System.Text.Json;
 
 namespace Hahn.ApplicationProcess.February2021.Domain.Repository
 {
     public class AssetRepository : RepositoryBase, IAssetRepository
     {
-      
+
         public async Task DeleteAsync(int Id)
         {
             using (AssetDbContext context = new AssetDbContext())
@@ -88,7 +85,7 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
 
         public async Task SaveAsync(AssetViewModel model)
         {
-           using(var context = new AssetDbContext())
+            using (var context = new AssetDbContext())
             {
                 var newAsset = new Asset
                 {
@@ -105,7 +102,8 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
                     try
                     {
                         await context.SaveChangesAsync();
-                    }catch(Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         Console.WriteLine($"Implement logs here: {ex}");
                     }
@@ -115,10 +113,10 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
 
         public async Task UpdateAsync(int Id, AssetViewModel model)
         {
-            using(AssetDbContext context = new AssetDbContext())
+            using (AssetDbContext context = new AssetDbContext())
             {
                 var entity = await context.Asset.FirstOrDefaultAsync(p => p.ID == Id);
-                if(entity != null)
+                if (entity != null)
                 {
                     entity.AssetName = model.Name;
                     entity.Department = model.Department.ToString();
@@ -131,7 +129,8 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
                 try
                 {
                     await context.SaveChangesAsync();
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine($"Update Profile Error: {ex}");
                 }

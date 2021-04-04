@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Hahn.ApplicationProcess.February2021.Domain.ViewModels
 {
@@ -30,6 +28,6 @@ namespace Hahn.ApplicationProcess.February2021.Domain.ViewModels
         /// <summary>
         /// Broken condition of asset
         /// </summary>
-        public bool isBroken { get; set; } 
+        public bool isBroken { get; set; }
     }
 }

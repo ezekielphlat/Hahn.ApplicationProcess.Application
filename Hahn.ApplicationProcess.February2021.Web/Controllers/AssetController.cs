@@ -2,6 +2,7 @@
 using Hahn.ApplicationProcess.February2021.Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Hahn.ApplicationProcess.February2021.Web.Controllers
         {
             var result = await _asset.FindAllAsync();
 
-            _logger.LogInformation($"{DateTime.Now} {"AssetController: "} request for all asset is successful");
+            Log.Information($"{DateTime.Now} {"AssetController: "} request for all asset is successful");
             return Ok(new ResponseMessageViewModel { Status = 200, Message = "Successful", Data = result });              
                      
            
@@ -52,8 +53,8 @@ namespace Hahn.ApplicationProcess.February2021.Web.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var result = await _asset.FindByIdAsync(id);
-         
-            _logger.LogInformation($"{DateTime.Now} {"AssetController:GetByIdAsync "} request for specific asset is successful");
+
+            Log.Information($"{DateTime.Now} {"AssetController:GetByIdAsync "} request for specific asset is successful");
              return Ok(new ResponseMessageViewModel { Status = 200, Message = "Successful", Data = result });          
         }
 

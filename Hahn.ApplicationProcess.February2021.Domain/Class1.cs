@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Hahn.ApplicationProcess.February2021.Domain
+﻿namespace Hahn.ApplicationProcess.February2021.Domain
 {
     public class Class1
     {
