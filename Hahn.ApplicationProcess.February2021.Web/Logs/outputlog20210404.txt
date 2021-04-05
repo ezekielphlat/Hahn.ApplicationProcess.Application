@@ -1,1 +1,16 @@
 2021-04-04 00:38:27.043 +01:00 [INF] 4/4/2021 12:38:27 AM AssetController:  request for all asset is successful
+2021-04-04 22:17:11.612 +01:00 [INF] 4/4/2021 10:17:11 PM AssetController:  request for all asset is successful
+2021-04-04 22:29:10.672 +01:00 [INF] 4/4/2021 10:29:10 PM AssetController:  request for all asset is successful
+2021-04-04 22:29:14.496 +01:00 [INF] 4/4/2021 10:29:14 PM AssetController:  request for all asset is successful
+2021-04-04 22:29:17.028 +01:00 [INF] 4/4/2021 10:29:17 PM AssetController:  request for all asset is successful
+2021-04-04 22:29:18.791 +01:00 [INF] 4/4/2021 10:29:18 PM AssetController:  request for all asset is successful
+2021-04-04 22:29:19.780 +01:00 [INF] 4/4/2021 10:29:19 PM AssetController:  request for all asset is successful
+2021-04-04 22:29:38.327 +01:00 [INF] 4/4/2021 10:29:38 PM AssetController:  request for all asset is successful
+2021-04-04 22:30:09.489 +01:00 [INF] 4/4/2021 10:30:09 PM AssetController:  request for all asset is successful
+2021-04-04 22:34:11.313 +01:00 [INF] 4/4/2021 10:34:11 PM AssetController:  request for all asset is successful
+2021-04-04 22:52:09.268 +01:00 [INF] 4/4/2021 10:52:09 PM AssetController:  request for all asset is successful
+2021-04-04 22:58:20.532 +01:00 [INF] 4/4/2021 10:58:20 PM AssetController:  request for all asset is successful
+2021-04-04 23:00:41.932 +01:00 [INF] 4/4/2021 11:00:41 PM AssetController:  request for all asset is successful
+2021-04-04 23:01:31.297 +01:00 [INF] 4/4/2021 11:01:31 PM AssetController:  request for all asset is successful
+2021-04-04 23:03:29.014 +01:00 [INF] 4/4/2021 11:03:29 PM AssetController:  request for all asset is successful
+2021-04-04 23:03:34.284 +01:00 [INF] 4/4/2021 11:03:34 PM AssetController:  request for all asset is successful

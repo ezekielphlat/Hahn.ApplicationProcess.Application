@@ -1,0 +1,63 @@
+<template>
+    <ux-dialog style="width: 500px;">
+
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Asset with Name: ${asset.name} </h5>
+              </div>
+        <ux-dialog-body>
+            <div class="modal-body">
+                <form action="">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Asset Name</label>
+                        <input type="email" class="form-control" value.bind="asset.name" id="exampleFormControlInput1" placeholder="Enter Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Department</label>
+                        <select class="form-control" value.bind="asset.departmentString" aria-label="Default select example">
+                            <option selected>Select department</option>
+                            <option value="1">HQ</option>
+                            <option value="2">Store1</option>
+                            <option value="3">Store2</option>
+                            <option value="4">Store3</option>
+                            <option value="5">MaintenanceStation</option>
+                          </select>                
+                        </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Country of Department</label>
+                        <input type="email" class="form-control" value.bind="asset.country" id="exampleFormControlInput1" placeholder="Enter Country">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email of Department address</label>
+                        <input type="email" class="form-control" value.bind="asset.email" id="exampleFormControlInput1" placeholder="Enter Email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Purchase Date</label>
+                        <input type="email" class="form-control"value.bind="asset.dateString" id="exampleFormControlInput1" placeholder="Enter Date">
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" checked.bind="asset.isBroken" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Is Broken
+                        </label>
+                      </div>                   
+                </form>
+              </div>
+         
+        </ux-dialog-body>
+  
+        <ux-dialog-footer>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" click.trigger = "controller.cancel()" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" click.trigger = "controller.ok(message)">Save changes</button>
+              </div>    
+        </ux-dialog-footer>	
+        </div>
+        </div>
+        
+     </ux-dialog>    
+
+
+
+</template>

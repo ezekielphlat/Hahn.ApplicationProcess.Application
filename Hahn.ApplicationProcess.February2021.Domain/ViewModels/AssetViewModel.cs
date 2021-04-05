@@ -13,6 +13,7 @@ namespace Hahn.ApplicationProcess.February2021.Domain.ViewModels
         /// Department of Asset
         /// </summary>
         public Department Department { get; set; }
+        public string DepartmentString { get; set; }
         /// <summary>
         /// Country of Department
         /// </summary>
@@ -25,6 +26,7 @@ namespace Hahn.ApplicationProcess.February2021.Domain.ViewModels
         /// Date Asset was purchaced
         /// </summary>
         public DateTime Date { get; set; }
+        public string DateString { get; set; }
         /// <summary>
         /// Broken condition of asset
         /// </summary>

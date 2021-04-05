@@ -41,10 +41,12 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
             {
                 Id = d.ID,
                 Name = d.AssetName,
-                Department = (Department)Enum.Parse(typeof(Department), d.Department),
+                Department =  (Department)Enum.Parse(typeof(Department), d.Department),
+                DepartmentString =  (string)Enum.GetName(typeof(Department),Convert.ToInt32(1)),
                 Country = d.CountryOfDepartment,
                 Email = d.EmailAddressOfDepartment,
                 Date = d.PurchaseDate,
+                DateString = d.PurchaseDate.ToString("MM-dd-yy"),
                 isBroken = d.Broken
             }).ToListAsync();
         }
@@ -57,6 +59,7 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
                     Id = a.ID,
                     Name = a.AssetName,
                     Department = (Department)Enum.Parse(typeof(Department), a.Department),
+                    DepartmentString = Enum.GetName(typeof(Department), a.Department),
                     Country = a.CountryOfDepartment,
                     Email = a.EmailAddressOfDepartment,
                     Date = a.PurchaseDate,

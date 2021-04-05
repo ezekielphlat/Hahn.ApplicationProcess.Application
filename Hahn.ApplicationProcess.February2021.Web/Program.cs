@@ -14,6 +14,7 @@ namespace Hahn.ApplicationProcess.February2021.Web
     {
         public static void Main(string[] args)
         {
+            //TODO: set log file from appsettings
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Verbose()
                 .WriteTo.Console()

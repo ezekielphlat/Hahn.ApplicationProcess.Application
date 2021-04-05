@@ -36,7 +36,7 @@ namespace Hahn.ApplicationProcess.February2021.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            var result = await _asset.FindAllAsync();
+            var result = await _asset.FindAllAsync();            
 
             Log.Information($"{DateTime.Now} {"AssetController: "} request for all asset is successful");
             return Ok(new ResponseMessageViewModel { Status = 200, Message = "Successful", Data = result });              
@@ -104,9 +104,9 @@ namespace Hahn.ApplicationProcess.February2021.Web.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Update method for assets
         /// </summary>
-        ///  /// <remarks>
+        /// <remarks>
         /// Sample request:
         /// 
         ///     POST /api/asset/1
