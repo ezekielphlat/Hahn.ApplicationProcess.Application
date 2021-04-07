@@ -69,7 +69,7 @@ namespace Hahn.ApplicationProcess.February2021.Web
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

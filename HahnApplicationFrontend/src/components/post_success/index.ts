@@ -1,17 +1,16 @@
 import {inject} from 'aurelia-framework';
-import {EventAggregator} from 'aurelia-event-aggregator';
+import {Router} from 'aurelia-router';
 
-@inject(EventAggregator)
+@inject(Router)
 export class PostSuccess{
-    eventAggregator:any;
+    router: any;
     resData: any;
+    subscriber: any;
     
- constructor(eventAggregator){
-    this.eventAggregator = eventAggregator;
-    this.eventAggregator.subscribe('createStatus', payload => {
-        this.resData = payload;
-        console.log(payload);
-     });
+ constructor(router){
+     this.router = router;
+     setTimeout(() => {
+        this.router.navigateToRoute('home');
+    }, 5000);
  }
-
 }

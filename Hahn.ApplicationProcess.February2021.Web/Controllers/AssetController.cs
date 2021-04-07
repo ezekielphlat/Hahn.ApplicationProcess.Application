@@ -169,7 +169,7 @@ namespace Hahn.ApplicationProcess.February2021.Web.Controllers
             }
             else
             {
-                return BadRequest("Not a valid student id");
+                return BadRequest("Not a valid asset id");
 
             }
 

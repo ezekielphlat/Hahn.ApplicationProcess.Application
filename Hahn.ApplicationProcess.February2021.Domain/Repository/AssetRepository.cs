@@ -42,7 +42,7 @@ namespace Hahn.ApplicationProcess.February2021.Domain.Repository
                 Id = d.ID,
                 Name = d.AssetName,
                 Department =  (Department)Enum.Parse(typeof(Department), d.Department),
-                DepartmentString =  (string)Enum.GetName(typeof(Department),Convert.ToInt32(1)),
+                DepartmentString =  d.Department,
                 Country = d.CountryOfDepartment,
                 Email = d.EmailAddressOfDepartment,
                 Date = d.PurchaseDate,

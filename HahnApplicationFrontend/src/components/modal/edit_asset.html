@@ -8,40 +8,61 @@
               </div>
         <ux-dialog-body>
             <div class="modal-body">
-                <form action="">
-                    <div class="mb-3">
+                <form submit.delegate="submitAsset()">
+                    <div class="mb-3" validation-errors.bind="nameErrors" class.bind="nameErrors.length ? 'has-error' : ''">
                         <label for="exampleFormControlInput1" class="form-label">Asset Name</label>
-                        <input type="email" class="form-control" value.bind="asset.name" id="exampleFormControlInput1" placeholder="Enter Name">
+                        <input type="text" class="form-control" value.bind="asset.name & validateOnChange" id="exampleFormControlInput1" placeholder="Enter Name">
+                        <span class="help-block" repeat.for="errorInfo of nameErrors">
+                          ${errorInfo.error.message}
+                        </span>                   
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3"  validation-errors.bind="departmentErrors" class.bind="departmentErrors.length ? 'has-error' : ''">
                         <label for="exampleFormControlInput1" class="form-label">Department</label>
-                        <select class="form-control" value.bind="asset.departmentString" aria-label="Default select example">
-                            <option selected>Select department</option>
-                            <option value="1">HQ</option>
-                            <option value="2">Store1</option>
-                            <option value="3">Store2</option>
-                            <option value="4">Store3</option>
-                            <option value="5">MaintenanceStation</option>
-                          </select>                
+                        <select class="form-control" value.bind="asset.department & validate" aria-label="Default select example">
+                            <option model.bind="null">Select department</option>
+                            <option repeat.for="department of departments"
+                            model.bind="department.id">${department.name}</option>                      
+                          </select>
+                          <span class="help-block" repeat.for="errorInfo of departmentErrors">
+                            ${errorInfo.error.message}
+                          </span>                  
                         </div>
-                    <div class="mb-3">
+                    <div class="mb-3" validation-errors.bind="countryErrors" class.bind="countryErrors.length ? 'has-error' : ''">
                         <label for="exampleFormControlInput1" class="form-label">Country of Department</label>
-                        <input type="email" class="form-control" value.bind="asset.country" id="exampleFormControlInput1" placeholder="Enter Country">
+                        <input type="text" class="form-control" value.bind="asset.country & validateOnChange" id="exampleFormControlInput1" placeholder="Enter Country">
+                        <span class="help-block" repeat.for="errorInfo of countryErrors">
+                          ${errorInfo.error.message}
+                        </span>  
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" validation-errors.bind="emailErrors" class.bind="emailErrors.length ? 'has-error' : ''">
                         <label for="exampleFormControlInput1" class="form-label">Email of Department address</label>
-                        <input type="email" class="form-control" value.bind="asset.email" id="exampleFormControlInput1" placeholder="Enter Email">
+                        <input type="email" class="form-control" value.bind="asset.email & validateOnChange" id="exampleFormControlInput1" placeholder="Enter Email">
+                        <span class="help-block" repeat.for="errorInfo of emailErrors">
+                          ${errorInfo.error.message}
+                        </span>  
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" validation-errors.bind="dateErrors" class.bind="dateErrors.length ? 'has-error' : ''">
                         <label for="exampleFormControlInput1" class="form-label">Purchase Date</label>
-                        <input type="email" class="form-control"value.bind="asset.dateString" id="exampleFormControlInput1" placeholder="Enter Date">
+                        <input type="text" class="form-control"value.bind="asset.date & validateOnChange" id="exampleFormControlInput1" placeholder="Enter Date format: yyyy-MM-dd">
+                        <span class="help-block" repeat.for="errorInfo of dateErrors">
+                          ${errorInfo.error.message}
+                        </span>  
                     </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" checked.bind="asset.isBroken" id="flexCheckChecked">
+                    <div class="form-check mb-3" validation-errors.bind="isBrokenErrors" class.bind="isBrokenErrors.length ? 'has-error' : ''">
+                        <input class="form-check-input" type="checkbox" checked.bind="isBroken & validateOnChange" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Is Broken
                         </label>
-                      </div>                   
+                        <span class="help-block" repeat.for="errorInfo of isBrokenErrors">
+                          ${errorInfo.error.message}
+                        </span>  
+                      </div>
+                     
+                    <!-- <div class="mb-3">
+                        <button disabled.bind="assetContainsValue" class="btn btn-light" type="reset">Reset</button>
+    
+                        <button class="btn btn-primary" type="submit" disabled.bind="controller.errors.length > 0">Send</button>
+                    </div> -->
                 </form>
               </div>
          
@@ -49,8 +70,8 @@
   
         <ux-dialog-footer>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" click.trigger = "controller.cancel()" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" click.trigger = "controller.ok(message)">Save changes</button>
+                <button type="button" class="btn btn-secondary" click.trigger = "dialogController.cancel()" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" click.trigger = "dialogController.ok(message)">Save changes</button>
               </div>    
         </ux-dialog-footer>	
         </div>

@@ -1,15 +1,17 @@
 import {ValidationRules, ValidationControllerFactory} from 'aurelia-validation';
 import {inject} from 'aurelia-framework'
-import {bindable} from 'aurelia-framework'
 import { ObserverLocator } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {Router} from 'aurelia-router';
+import {DialogService} from 'aurelia-dialog';
+import {Prompt} from '../modal/prompt';
 
 let httpClient = new HttpClient()
 let baseUrl = "https://localhost:5001/api/Asset";
-@inject(ValidationControllerFactory,ObserverLocator,EventAggregator,Router)
+@inject(ValidationControllerFactory,ObserverLocator,EventAggregator,Router,DialogService)
 export class Create{
+    dialogService:any;
     assetContainsValue= false;
     errorMessage:any;
     router: any;
@@ -26,7 +28,7 @@ export class Create{
       ];
     selectedDepartmentID = null;
     eventAggregator: any;
-    constructor(validationControllerFactory,observerLocator, eventAggregator, router){
+    constructor(validationControllerFactory,observerLocator, eventAggregator, router,dialogService){
         this.controller = validationControllerFactory.createForCurrentScope();
         var subscription = observerLocator
             .getObserver(this, 'asset')
@@ -34,7 +36,22 @@ export class Create{
             
             this.eventAggregator = eventAggregator;
             this.router = router;
+            this.dialogService = dialogService;
     }
+    openModal(asset) {
+        this.dialogService.open( {viewModel: Prompt, model:this.asset }).then(response => {
+           console.log(response);
+              
+           if (!response.wasCancelled) {
+              this.asset = null;
+           } else {
+               this.asset = asset
+              console.log('cancelled');
+
+           }
+           console.log(response.output);
+        });
+     }
     
     submitAsset(){
         this.controller.validate();
@@ -46,7 +63,7 @@ export class Create{
         }).then(response => response.json())
         .then(data => {
             this.hasError = false;
-            this.eventAggregator.publish('createStatus', data);
+            this.eventAggregator.publish('assetStatus', "Created");
             this.router.navigateToRoute('post-success');
             console.log(data);
         }).catch(error => {

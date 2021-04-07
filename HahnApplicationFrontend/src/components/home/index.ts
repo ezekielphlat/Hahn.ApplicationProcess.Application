@@ -1,17 +1,22 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {DialogService} from 'aurelia-dialog';
 import {EditAssetModal} from '../modal/edit_asset'
+import {inject} from 'aurelia-framework';
+import {Router} from 'aurelia-router';
 
 let httpClient = new HttpClient()
 let baseUrl = "https://localhost:5001/api/Asset";
 
-export class Home{
-    static inject = [DialogService];
+@inject(DialogService,Router)
+export class Home{    
     assetData: any;
     dialogService: any;
-    constructor(dialogService){
+    router: any;
+    eventAggregator: any;
+    constructor(dialogService,router){
         this.getAllAssets();
-        this.dialogService = dialogService;
+        this.dialogService = dialogService; 
+        this.router = router; 
       
     }
 
@@ -20,12 +25,25 @@ export class Home{
            console.log(response);
               
            if (!response.wasCancelled) {
-              console.log(response);
               console.log(asset);
+              this.updateAsset(asset.id, asset)
+
            } else {
               console.log('cancelled');
            }
            console.log(response.output);
+        });
+     }
+     updateAsset(id,asset) {
+        httpClient.fetch(baseUrl+'/'+id, {
+           method: "PUT",
+           body: JSON.stringify(asset)
+        })
+          
+        .then(response => response.json())
+        .then(data => {
+           console.log(data);
+           this.router.navigateToRoute('post-success');
         });
      }
 
@@ -42,6 +60,14 @@ export class Home{
         this.openModal(asset);
     }
     deleteAsset(id){
-        console.log(id);
+        console.log("asset id: "+id);
+        httpClient.fetch(baseUrl + '/'+id, {
+            method: "DELETE"
+         })
+         .then(response => response.json())
+         .then(data => {
+            console.log(data);
+            this.router.navigateToRoute('post-success');
+         });
     }
 }

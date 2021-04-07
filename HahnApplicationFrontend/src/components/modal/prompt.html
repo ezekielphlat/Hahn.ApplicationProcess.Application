@@ -1,0 +1,25 @@
+<template>
+    <ux-dialog style="width: 500px;">
+
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Data Reset </h5>
+              </div>
+        <ux-dialog-body>
+            <div class="modal-body">
+                <h3>Are you sure you want to reset the form</h3>
+              </div>         
+        </ux-dialog-body>
+  
+        <ux-dialog-footer>
+            <div class="modal-footer">
+                <button click.trigger = "controller.cancel()">Cancel</button>
+                <button click.trigger = "controller.ok(message)">Ok</button>
+                </div>    
+        </ux-dialog-footer>	
+        </div>
+        </div>
+        
+     </ux-dialog>
+</template>
