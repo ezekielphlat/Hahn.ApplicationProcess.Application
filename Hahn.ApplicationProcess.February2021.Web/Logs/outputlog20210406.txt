@@ -1,0 +1,5 @@
+2021-04-06 22:46:11.473 +01:00 [INF] 4/6/2021 10:46:11 PM AssetController:  request for all asset is successful
+2021-04-06 22:46:15.398 +01:00 [INF] 4/6/2021 10:46:15 PM AssetController:  request for all asset is successful
+2021-04-06 22:51:28.876 +01:00 [INF] 4/6/2021 10:51:28 PM AssetController:  request for all asset is successful
+2021-04-06 22:51:31.905 +01:00 [INF] 4/6/2021 10:51:31 PM AssetController:  request for all asset is successful
+2021-04-06 23:05:46.511 +01:00 [INF] 4/6/2021 11:05:46 PM AssetController:  request for all asset is successful

@@ -59,7 +59,11 @@ namespace Hahn.ApplicationProcess.February2021.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAssetRepository asset)
         {
-            app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors(options => {
+                options.AllowAnyOrigin();
+                options.AllowAnyMethod();
+                options.AllowAnyHeader();
+                });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
