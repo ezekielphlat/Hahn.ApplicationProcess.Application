@@ -1,0 +1,8 @@
+{
+    "name": "Asset Name",
+    "department": "Department",
+    "country": "Country of Department",
+    "email": "Email of Department address",
+    "date": "Purchase Date",
+    "broken":"Is Broken"
+}

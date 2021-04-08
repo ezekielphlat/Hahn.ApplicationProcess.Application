@@ -240,6 +240,9 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
     new ModuleDependenciesPlugin({
       'aurelia-testing': ['./compile-spy', './view-spy']
     }),
+    // new CopyWebpackPlugin([
+    //   { from: './src/locales/', to: 'locales/' }
+    // ]),
     new HtmlWebpackPlugin({
       template: 'index.ejs',
       metadata: {
@@ -254,7 +257,8 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
     })),
     ...when(!tests, new CopyWebpackPlugin({
       patterns: [
-        { from: 'static', to: outDir, globOptions: { ignore: ['.*'] } }
+        { from: 'src/locales/', to: 'locales/' },
+        { from: 'static', to: outDir, globOptions: { ignore: ['.*'] } }       
       ]
     })), // ignore dot (hidden) files
     ...when(analyze, new BundleAnalyzerPlugin()),

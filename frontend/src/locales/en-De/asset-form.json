@@ -1,0 +1,8 @@
+{
+    "name": "Asset-Name",
+    "department": "Abteilung",
+    "country": "Land der Abteilung",
+    "email": "E-Mail der Abteilungsadresse",
+    "date": "Kaufdatum",
+    "broken":"Ist kaputt"
+}

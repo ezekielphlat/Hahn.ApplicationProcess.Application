@@ -19,7 +19,7 @@
       "extractCss": "prod",
       "coverage": false
     }
-  },
+  }, 
   "platform": {
     "hmr": false,
     "open": false,
