@@ -8,7 +8,7 @@ import {DialogService} from 'aurelia-dialog';
 import {Prompt} from '../modal/prompt';
 
 let httpClient = new HttpClient()
-let baseUrl = "https://localhost:5001/api/Asset";
+let baseUrl = "http://localhost:5001/api/Asset";
 @inject(ValidationControllerFactory,ObserverLocator,EventAggregator,Router,DialogService)
 export class Create{
     dialogService:any;

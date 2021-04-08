@@ -1,0 +1,1 @@
+2021-04-08 08:48:01.596 +01:00 [INF] 4/8/2021 8:48:01 AM AssetController:  request for all asset is successful

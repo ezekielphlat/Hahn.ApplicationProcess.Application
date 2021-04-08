@@ -42,7 +42,7 @@ namespace Hahn.ApplicationProcess.February2021.Web
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseKestrel().UseStartup<Startup>().UseUrls("http://localhost:5000");
+                    webBuilder.UseKestrel().UseStartup<Startup>().UseUrls("http://*:5000");
                 });
     }
 }

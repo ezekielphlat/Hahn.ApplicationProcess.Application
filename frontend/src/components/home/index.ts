@@ -5,7 +5,7 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 
 let httpClient = new HttpClient()
-let baseUrl = "https://localhost:5001/api/Asset";
+let baseUrl = "http://localhost:5000/api/Asset";
 
 @inject(DialogService,Router)
 export class Home{    

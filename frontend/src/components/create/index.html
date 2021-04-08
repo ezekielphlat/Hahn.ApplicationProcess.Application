@@ -56,7 +56,8 @@
                   </div>
                  
                 <div class="mb-3">
-                    <button disabled.bind="assetContainsValue" class="btn btn-light" click.trigger="openModal(asset)">Reset</button>
+                  <!-- TODO: implement modal for reset -->
+                    <button disabled.bind="assetContainsValue" type="reset" class="btn btn-light" click.trigger="openModal(asset)">Reset</button>
 
                     <button class="btn btn-primary" type="submit" disabled.bind="controller.errors.length > 0">Send</button>
                 </div>
