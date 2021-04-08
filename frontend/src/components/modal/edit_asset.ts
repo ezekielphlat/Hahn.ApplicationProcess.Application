@@ -1,9 +1,12 @@
 import {inject} from 'aurelia-framework';
+import {view} from 'aurelia-framework';
 import {DialogController} from 'aurelia-dialog';
 import {ValidationRules, ValidationControllerFactory} from 'aurelia-validation';
 import { ObserverLocator } from 'aurelia-framework';
+import {PLATFORM} from 'aurelia-pal';
 
 
+@view(PLATFORM.moduleName('edit_asset'))
 @inject(DialogController, ValidationControllerFactory,ObserverLocator)
 export class EditAssetModal{
     controller: any;
